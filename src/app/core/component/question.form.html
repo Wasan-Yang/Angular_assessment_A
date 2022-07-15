@@ -1,0 +1,35 @@
+<br />
+<div class="modal">
+    <div class="modal-content">
+        <h4>Add a New Questions</h4>
+        <select [(ngModel)]="questionForm.type" style="width: 200px; height: 30px">
+            <option *ngFor="let item of questionType" [value]="item.type">
+                {{item.label}}
+            </option>
+        </select>
+        <br />
+        <br />
+        <textarea [(ngModel)]="questionForm.question" rows="10" placeholder="Type question here" style="width: 200px">
+    </textarea>
+        <div *ngIf="questionForm.type == 'checkbox'">
+            <div *ngFor="let answer of answerList;let index = index;trackBy:trackByIndex;">
+                <input style="width: 200px; height: 30px" [(ngModel)]="answerList[index].value"
+                    placeholder="Add Answer Option" />
+                <br />
+                <br />
+            </div>
+            <br />
+            <span (click)="addAnswer()"> + Add another answer </span>
+        </div>
+        <br />
+        <button (click)="submitQuestion()">
+            submit
+        </button>
+        <div>
+            <span *ngFor="let item of errorList" class="error">
+                {{item}}
+
+            </span>
+        </div>
+    </div>
+</div>

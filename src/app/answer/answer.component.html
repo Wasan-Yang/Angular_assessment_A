@@ -1,0 +1,25 @@
+<div class="form">
+    <div>
+        <div *ngFor="let item of questionList">
+            <b>{{ item.question }}</b>
+            <br />
+            <div [ngSwitch]="item.type">
+                <span *ngSwitchCase="'text'"> {{ item.answer }}</span>
+                <div *ngSwitchCase="'checkbox'">
+                    <li style="list-style-type: none;">
+                        <ul *ngFor="let option of item.options">
+                            <span *ngIf="option.checked">
+                                {{ option.value }}
+                            </span>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+
+            <br /><br />
+        </div>
+    </div>
+    <div>
+        <a (click)="back()" href="javascript:;">Back to form builder</a>
+    </div>
+</div>

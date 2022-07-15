@@ -1,0 +1,24 @@
+<div class="form">
+  <ng-template #content let-modal>
+    <question-form #questionForm (onClose)="modal.close('question form')"></question-form>
+  </ng-template>
+
+  <div *ngIf="title"></div>
+  <div *ngFor="let item of questions">
+    <div [ngSwitch]="item.type">
+      <label>{{ item.question }}</label><br />
+      <textarea *ngSwitchCase="'text'" [(ngModel)]="item.answer"></textarea>
+      <div [ngSwitch]="'checkbox'">
+        <div *ngFor="let option of item.options">
+          <input type="checkbox" [(ngModel)]="option.checked" />
+          {{ option.value }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="add-new" (click)="addQuestion(content)" href="javascript:;">
+    Add new question
+  </a>
+  <br />
+  <button *ngIf="(questions.length > 0)" (click)="onSubmit()">Review my answers ></button>
+</div>

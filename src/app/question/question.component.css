@@ -1,0 +1,16 @@
+.form {
+  width: 500px;
+  border: 1px solid;
+  padding: 10px;
+  position: relative;
+}
+
+button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+a {
+  color: black;
+}
